@@ -1,502 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Digital Complaint Tracker</title>
-  <style>
-    /* --- Basic Reset & Styling --- */
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 20px;
-      color: #333;
-    }
-    #app {
-      background: white;
-      max-width: 600px;
-      width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-      padding: 20px 30px;
-      min-height: 650px;
-      display: flex;
-      flex-direction: column;
-    }
-    h1 {
-      color: #4b6cb7;
-      text-align: center;
-      margin-bottom: 25px;
-      letter-spacing: 2px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 100%;
-    }
-    label {
-      font-weight: 600;
-      color: #4b6cb7;
-    }
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    textarea,
-    select {
-      padding: 10px 12px;
-      border-radius: 6px;
-      border: 1.5px solid #ccc;
-      font-size: 1rem;
-      font-family: inherit;
-      outline-offset: 2px;
-      resize: vertical;
-    }
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    input[type="password"]:focus,
-    textarea:focus,
-    select:focus {
-      border-color: #4b6cb7;
-      outline: none;
-    }
-    textarea {
-      min-height: 100px;
-    }
-    button {
-      padding: 12px 18px;
-      background-color: #4b6cb7;
-      color: white;
-      border: none;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #35478c;
-    }
-    .link-button {
-      background: none;
-      border: none;
-      color: #4b6cb7;
-      cursor: pointer;
-      font-size: 0.95rem;
-      padding: 0;
-      margin-top: 5px;
-      text-decoration: underline;
-    }
-    .error-message {
-      color: #e74c3c;
-      font-weight: 600;
-      font-size: 0.9rem;
-      min-height: 20px;
-      margin-top: -10px;
-      margin-bottom: 10px;
-    }
-    .success-message {
-      color: #27ae60;
-      font-weight: 600;
-      font-size: 0.9rem;
-      min-height: 20px;
-      margin-top: -10px;
-      margin-bottom: 10px;
-    }
-    /* Complaint List */
-    .complaint-list {
-      margin-top: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .complaint-item {
-      border: 1.5px solid #4b6cb7;
-      border-radius: 10px;
-      padding: 15px 20px;
-      background: #f3f6fb;
-      position: relative;
-    }
-    .complaint-item h3 {
-      margin: 0 0 8px 0;
-      color: #182848;
-    }
-    .complaint-item p {
-      margin: 0 0 10px 0;
-      white-space: pre-wrap;
-      color: #555;
-    }
-    .complaint-meta {
-      font-size: 0.85rem;
-      color: #666;
-      margin-bottom: 10px;
-    }
-    .btn-group {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      display: flex;
-      gap: 8px;
-    }
-    .btn-group button {
-      background: transparent;
-      border: none;
-      color: #4b6cb7;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
-    }
-    .btn-group button:hover {
-      color: #182848;
-    }
-    /* Filters */
-    .filters {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
-    .filters select, .filters input {
-      padding: 8px 10px;
-      border-radius: 6px;
-      border: 1.5px solid #ccc;
-      font-size: 1rem;
-      outline-offset: 2px;
-    }
-    .filters select:focus, .filters input:focus {
-      border-color: #4b6cb7;
-      outline: none;
-    }
-    /* Responsive */
-    @media (max-width: 640px) {
-      #app {
-        padding: 15px 20px;
-      }
-      .filters {
-        flex-direction: column;
-      }
-      .filters select, .filters input {
-        width: 100%;
-      }
-    }
-  </style>
+  <title>Digital Complaint Tracker - Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <main class="container">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Welcome to Digital Complaint Tracker</h1>
+        <p>Register now to submit your complaints quickly and get resolutions faster!</p>
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" alt="Customer Support Illustration" class="hero-img" />
+      </div>
+    </section>
 
-  <div id="app">
-    <h1>Digital Complaint Tracker</h1>
+    <section class="register-section">
+      <h2>Create Your Account</h2>
+      <form id="registerForm" novalidate>
+        <div class="form-group">
+          <label for="regName">Full Name</label>
+          <input type="text" id="regName" name="regName" placeholder="John Doe" autocomplete="name" required />
+          <small class="input-error" id="nameError"></small>
+        </div>
 
-    <!-- Views container -->
-    <div id="viewContainer"></div>
-  </div>
+        <div class="form-group">
+          <label for="regEmail">Email Address</label>
+          <input type="email" id="regEmail" name="regEmail" placeholder="example@mail.com" autocomplete="email" required />
+          <small class="input-error" id="emailError"></small>
+        </div>
 
-  <script>
-    (() => {
-      // Storage keys
-      const STORAGE_USERS = "DCT_users";
-      const STORAGE_SESSION = "DCT_session";
-      const STORAGE_COMPLAINTS = "DCT_complaints";
+        <div class="form-group">
+          <label for="regPassword">Password</label>
+          <input type="password" id="regPassword" name="regPassword" placeholder="At least 8 characters" autocomplete="new-password" required />
+          <small class="input-error" id="passwordError"></small>
+        </div>
 
-      // State
-      let users = JSON.parse(localStorage.getItem(STORAGE_USERS)) || [];
-      let complaints = JSON.parse(localStorage.getItem(STORAGE_COMPLAINTS)) || [];
-      let currentUser = JSON.parse(localStorage.getItem(STORAGE_SESSION)) || null;
+        <div class="password-requirements">
+          <p>Password must contain:</p>
+          <ul>
+            <li id="lengthCheck" class="invalid">Minimum 8 characters</li>
+            <li id="upperCheck" class="invalid">At least one uppercase letter (A-Z)</li>
+            <li id="lowerCheck" class="invalid">At least one lowercase letter (a-z)</li>
+            <li id="numberCheck" class="invalid">At least one number (0-9)</li>
+            <li id="specialCheck" class="invalid">At least one special character (!@#$%^&*)</li>
+          </ul>
+        </div>
 
-      const container = document.getElementById("viewContainer");
+        <div class="form-group">
+          <label for="regConfirm">Confirm Password</label>
+          <input type="password" id="regConfirm" name="regConfirm" placeholder="Re-enter password" autocomplete="new-password" required />
+          <small class="input-error" id="confirmError"></small>
+        </div>
 
-      // Utility to save all
-      function saveAll() {
-        localStorage.setItem(STORAGE_USERS, JSON.stringify(users));
-        localStorage.setItem(STORAGE_COMPLAINTS, JSON.stringify(complaints));
-        if(currentUser) {
-          localStorage.setItem(STORAGE_SESSION, JSON.stringify(currentUser));
-        } else {
-          localStorage.removeItem(STORAGE_SESSION);
-        }
-      }
+        <button type="submit" class="btn-primary">Register</button>
+        <p class="switch-text">
+          Already have an account? <button type="button" id="toLoginBtn" class="btn-link">Login here</button>
+        </p>
+        <div id="regMessage" class="message"></div>
+      </form>
+    </section>
+  </main>
 
-      // Escape text for safety
-      function escapeHTML(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-      }
-
-      // PASSWORD VALIDATION
-      function validatePassword(password) {
-        const lengthCheck = password.length >= 8;
-        const upperCheck = /[A-Z]/.test(password);
-        const lowerCheck = /[a-z]/.test(password);
-        const numberCheck = /[0-9]/.test(password);
-        const specialCheck = /[!@#$%^&*]/.test(password);
-        return lengthCheck && upperCheck && lowerCheck && numberCheck && specialCheck;
-      }
-
-      // =========== VIEWS ===========
-
-      // Show Registration Form
-      function renderRegister() {
-        container.innerHTML = `
-          <form id="registerForm" novalidate>
-            <label for="regName">Full Name</label>
-            <input type="text" id="regName" required autocomplete="name" />
-            <label for="regEmail">Email</label>
-            <input type="email" id="regEmail" required autocomplete="email" />
-            <label for="regPassword">Password</label>
-            <input type="password" id="regPassword" required autocomplete="new-password" placeholder="At least 8 chars, upper, lower, number, special"/>
-            <label for="regConfirm">Confirm Password</label>
-            <input type="password" id="regConfirm" required autocomplete="new-password" />
-            <div id="regMessage" class="error-message"></div>
-            <button type="submit">Register</button>
-            <button type="button" id="toLoginBtn" class="link-button">Already have an account? Login</button>
-          </form>
-        `;
-
-        const form = document.getElementById("registerForm");
-        const message = document.getElementById("regMessage");
-        const toLoginBtn = document.getElementById("toLoginBtn");
-
-        toLoginBtn.onclick = () => renderLogin();
-
-        form.onsubmit = e => {
-          e.preventDefault();
-          message.textContent = "";
-
-          const name = form.regName.value.trim();
-          const email = form.regEmail.value.trim().toLowerCase();
-          const password = form.regPassword.value;
-          const confirm = form.regConfirm.value;
-
-          if (!name || !email || !password || !confirm) {
-            message.textContent = "Please fill all fields.";
-            return;
-          }
-          if (!validatePassword(password)) {
-            message.textContent = "Password must be 8+ chars, include uppercase, lowercase, number & special char.";
-            return;
-          }
-          if (password !== confirm) {
-            message.textContent = "Passwords do not match.";
-            return;
-          }
-          if(users.find(u => u.email === email)) {
-            message.textContent = "Email already registered.";
-            return;
-          }
-
-          // Register user
-          const newUser = { id: Date.now(), name, email, password };
-          users.push(newUser);
-          currentUser = { id: newUser.id, name: newUser.name, email: newUser.email };
-          saveAll();
-          renderDashboard();
-        };
-      }
-
-      // Show Login Form
-      function renderLogin() {
-        container.innerHTML = `
-          <form id="loginForm" novalidate>
-            <label for="loginEmail">Email</label>
-            <input type="email" id="loginEmail" required autocomplete="email" />
-            <label for="loginPassword">Password</label>
-            <input type="password" id="loginPassword" required autocomplete="current-password" />
-            <div id="loginMessage" class="error-message"></div>
-            <button type="submit">Login</button>
-            <button type="button" id="toRegisterBtn" class="link-button">Don't have an account? Register</button>
-          </form>
-        `;
-
-        const form = document.getElementById("loginForm");
-        const message = document.getElementById("loginMessage");
-        const toRegisterBtn = document.getElementById("toRegisterBtn");
-
-        toRegisterBtn.onclick = () => renderRegister();
-
-        form.onsubmit = e => {
-          e.preventDefault();
-          message.textContent = "";
-
-          const email = form.loginEmail.value.trim().toLowerCase();
-          const password = form.loginPassword.value;
-
-          const user = users.find(u => u.email === email);
-          if (!user) {
-            message.textContent = "User not found.";
-            return;
-          }
-          if(user.password !== password) {
-            message.textContent = "Incorrect password.";
-            return;
-          }
-          currentUser = { id: user.id, name: user.name, email: user.email };
-          saveAll();
-          renderDashboard();
-        };
-      }
-
-      // Show Dashboard (complaints)
-      function renderDashboard() {
-        container.innerHTML = `
-          <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom: 20px;">
-            <h2>Welcome, ${escapeHTML(currentUser.name)}</h2>
-            <button id="logoutBtn" style="background:#e74c3c; color:white; border:none; border-radius: 8px; padding: 8px 15px; cursor:pointer;">Logout</button>
-          </div>
-
-          <form id="complaintForm" novalidate style="margin-bottom:20px;">
-            <h3>Submit a Complaint</h3>
-            <label for="complaintTitle">Title</label>
-            <input type="text" id="complaintTitle" required />
-            <label for="complaintDesc">Description</label>
-            <textarea id="complaintDesc" required></textarea>
-            <label for="complaintCategory">Category</label>
-            <select id="complaintCategory" required>
-              <option value="" disabled selected>Select category</option>
-              <option value="Service">Service</option>
-              <option value="Product">Product</option>
-              <option value="Billing">Billing</option>
-              <option value="Other">Other</option>
-            </select>
-            <label for="complaintPriority">Priority</label>
-            <select id="complaintPriority" required>
-              <option value="" disabled selected>Select priority</option>
-              <option value="Low">Low</option>
-              <option value="Normal">Normal</option>
-              <option value="High">High</option>
-            </select>
-            <button type="submit">Submit Complaint</button>
-            <div id="complaintMessage" class="error-message"></div>
-          </form>
-
-          <h3>Your Complaints</h3>
-          <input type="text" id="searchComplaints" placeholder="Search complaints by title or description" style="width:100%; padding:10px; border-radius:6px; border:1.5px solid #ccc; margin-bottom:15px;" />
-          <div id="complaintList" class="complaint-list"></div>
-        `;
-
-        const logoutBtn = document.getElementById("logoutBtn");
-        const complaintForm = document.getElementById("complaintForm");
-        const complaintMessage = document.getElementById("complaintMessage");
-        const complaintList = document.getElementById("complaintList");
-        const searchInput = document.getElementById("searchComplaints");
-
-        logoutBtn.onclick = () => {
-          currentUser = null;
-          saveAll();
-          renderLogin();
-        };
-
-        function renderComplaints(filterText = "") {
-          const userComplaints = complaints.filter(c => c.userId === currentUser.id);
-          const filtered = userComplaints.filter(c =>
-            c.title.toLowerCase().includes(filterText.toLowerCase()) ||
-            c.description.toLowerCase().includes(filterText.toLowerCase())
-          );
-          complaintList.innerHTML = "";
-
-          if(filtered.length === 0){
-            complaintList.innerHTML = "<p>No complaints found.</p>";
-            return;
-          }
-
-          filtered.forEach(c => {
-            const div = document.createElement("div");
-            div.className = "complaint-item";
-            div.innerHTML = `
-              <h3>${escapeHTML(c.title)}</h3>
-              <p>${escapeHTML(c.description)}</p>
-              <div class="complaint-meta">
-                Category: <strong>${c.category}</strong> | Priority: <strong>${c.priority}</strong> | Submitted: <strong>${new Date(c.createdAt).toLocaleString()}</strong>
-              </div>
-              <div class="btn-group">
-                <button title="Edit" aria-label="Edit complaint">&#9998;</button>
-                <button title="Delete" aria-label="Delete complaint">&#128465;</button>
-              </div>
-            `;
-
-            // Edit complaint
-            div.querySelector("button[title='Edit']").onclick = () => {
-              // Pre-fill form for edit
-              complaintForm.complaintTitle.value = c.title;
-              complaintForm.complaintDesc.value = c.description;
-              complaintForm.complaintCategory.value = c.category;
-              complaintForm.complaintPriority.value = c.priority;
-              complaintForm.dataset.editId = c.id;
-              complaintMessage.textContent = "";
-              complaintForm.querySelector("button[type=submit]").textContent = "Update Complaint";
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            };
-
-            // Delete complaint
-            div.querySelector("button[title='Delete']").onclick = () => {
-              if(confirm("Are you sure you want to delete this complaint?")) {
-                complaints = complaints.filter(comp => comp.id !== c.id);
-                saveAll();
-                renderComplaints(searchInput.value);
-              }
-            };
-
-            complaintList.appendChild(div);
-          });
-        }
-
-        complaintForm.onsubmit = e => {
-          e.preventDefault();
-          complaintMessage.textContent = "";
-
-          const title = complaintForm.complaintTitle.value.trim();
-          const description = complaintForm.complaintDesc.value.trim();
-          const category = complaintForm.complaintCategory.value;
-          const priority = complaintForm.complaintPriority.value;
-
-          if(!title || !description || !category || !priority){
-            complaintMessage.textContent = "Please fill all complaint fields.";
-            return;
-          }
-
-          if(complaintForm.dataset.editId){
-            // Edit mode
-            const id = Number(complaintForm.dataset.editId);
-            const index = complaints.findIndex(c => c.id === id);
-            if(index !== -1){
-              complaints[index].title = title;
-              complaints[index].description = description;
-              complaints[index].category = category;
-              complaints[index].priority = priority;
-              complaints[index].updatedAt = Date.now();
-            }
-            complaintForm.removeAttribute("data-edit-id");
-            complaintForm.querySelector("button[type=submit]").textContent = "Submit Complaint";
-          } else {
-            // New complaint
-            complaints.push({
-              id: Date.now(),
-              userId: currentUser.id,
-              title,
-              description,
-              category,
-              priority,
-              createdAt: Date.now(),
-              updatedAt: null,
-            });
-          }
-          saveAll();
-          complaintForm.reset();
-          renderComplaints(searchInput.value);
-        };
-
-        searchInput.oninput = () => {
-          renderComplaints(searchInput.value);
-        };
-
-        renderComplaints();
-      }
-
-      // On start
+  <script src="app.js"></script>
+</body>
+</html>

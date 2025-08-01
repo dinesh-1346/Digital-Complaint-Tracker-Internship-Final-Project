@@ -1,189 +1,805 @@
-body {
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: #333;
-}
-
-.container {
-  display: flex;
-  min-height: 100vh;
-  padding: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 50px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.hero-section {
-  flex: 1 1 400px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: #fff;
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.hero-content {
-  max-width: 400px;
-  margin: 0 auto;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.375rem;
 }
 
-.hero-section h1 {
-  font-size: 2.8rem;
-  margin-bottom: 20px;
+/* -------------- Scrollbar Styling -------------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffb700;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffa500;
+}
+
+/* -------------- Typography -------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 2.5rem;
   letter-spacing: 1.5px;
 }
 
-.hero-section p {
-  font-size: 1.25rem;
-  margin-bottom: 30px;
-  line-height: 1.4;
+h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
 }
 
-.hero-img {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+p, a, li, span, label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #eee;
 }
 
-.register-section {
-  flex: 1 1 450px;
-  background: #fff;
-  padding: 35px 40px;
-  border-radius: 25px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+p {
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
 }
 
-.register-section h2 {
-  margin-bottom: 25px;
+a {
+  color: #ffb700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  color: #ffa500;
+  text-decoration: underline;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 2rem;
-  color: #4b6cb7;
-  text-align: center;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-label {
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #4b6cb7;
-  font-size: 1rem;
-}
-
-input {
-  padding: 12px 15px;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 2px solid #ddd;
-  outline-offset: 3px;
-  transition: border-color 0.3s ease;
-}
-
-input:focus {
-  border-color: #4b6cb7;
-  outline: none;
-}
-
-.input-error {
-  color: #e74c3c;
-  font-size: 0.85rem;
-  height: 18px;
-  margin-top: 4px;
-}
-
-.password-requirements {
-  font-size: 0.9rem;
-  color: #666;
-  background: #f0f4ff;
-  padding: 15px 20px;
-  border-radius: 12px;
-  margin-top: -10px;
-  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
   user-select: none;
 }
 
-.password-requirements p {
-  margin: 0 0 8px 0;
+/* -------------- Navbar Styling -------------- */
+.navbar {
+  padding: 1rem 2rem;
+  background: transparent !important;
+  z-index: 999;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(25, 25, 30, 0.95) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+.navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.9rem;
+  color: #fff !important;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: #ffb700 !important;
+}
+
+.nav-link {
   font-weight: 600;
-  color: #4b6cb7;
+  font-size: 1.1rem;
+  color: #fff !important;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
 }
 
-.password-requirements ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
+.nav-link:hover,
+.nav-link:focus {
+  color: #ffb700 !important;
 }
 
-.password-requirements li {
-  margin-bottom: 6px;
-  padding-left: 24px;
+.navbar-toggler {
+  border: none;
+  outline: none !important;
+  color: #fff !important;
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 2px rgba(255, 183, 0, 0.7));
+  transition: filter 0.3s ease;
+}
+
+.navbar-toggler:hover {
+  filter: drop-shadow(0 0 5px #ffb700);
+}
+
+/* -------------- Hero Section -------------- */
+.hero-section {
+  padding: 9rem 1.5rem 5rem;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  user-select: none;
+}
+
+.hero-section h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 4.2rem;
+  color: #ffb700;
+  text-shadow:
+    0 0 6px #ffb700,
+    0 0 10px #ffb700,
+    0 0 20px #ffa500;
+  animation: glow 3s ease-in-out infinite alternate;
+  margin-bottom: 1rem;
+}
+
+.hero-section p.quote {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #ffe066;
+  margin-bottom: 2.5rem;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1.4s ease forwards;
+  opacity: 0;
+}
+
+.hero-section .btn-cta {
+  background: #ffb700;
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.35rem;
+  border-radius: 50px;
+  color: #2c2c2c;
+  font-weight: 800;
+  box-shadow: 0 12px 30px rgba(255, 183, 0, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+  animation: pulse 2.5s infinite;
+}
+
+.hero-section .btn-cta:hover,
+.hero-section .btn-cta:focus {
+  background: #ffa500;
+  color: #222;
+  box-shadow: 0 18px 40px rgba(255, 165, 0, 0.9);
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* -------------- Info Section -------------- */
+.info-section {
+  max-width: 1100px;
+  margin: 3rem auto 5rem;
+  padding: 0 1.5rem;
+  user-select: none;
+}
+
+.info-section h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-shadow: 1px 1px 8px rgba(0,0,0,0.7);
+  color: #fff;
+}
+
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.8rem;
+}
+
+.info-card {
+  background: rgba(255 255 255 / 0.15);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  width: 280px;
+  padding: 2.4rem 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  color: white;
+  cursor: default;
+  user-select: none;
+}
+
+.info-card:hover {
+  background: rgba(255 255 255 / 0.35);
+  box-shadow: 0 15px 40px rgba(255, 183, 0, 0.7);
+  transform: translateY(-12px);
+}
+
+.info-card img {
+  width: 80px;
+  margin-bottom: 1.2rem;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.35));
+}
+
+.info-card h3 {
+  font-weight: 800;
+  font-size: 1.6rem;
+  margin-bottom: 0.9rem;
+  text-shadow: 0 0 5px rgba(255, 183, 0, 0.9);
+}
+
+.info-card p {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #fff;
+  user-select: text;
+}
+
+/* -------------- Contact Section -------------- */
+#contact {
+  max-width: 700px;
+  margin: 0 auto 6rem;
+  text-align: center;
+}
+
+#contact p {
+  font-size: 1.1rem;
+  color: #f3d877;
+  user-select: text;
+}
+
+#contact a {
+  font-weight: 700;
+  color: #ffb700;
+  text-decoration: underline;
+}
+
+#contact a:hover {
+  color: #ffa500;
+}
+
+/* -------------- Footer -------------- */
+footer {
+  background: rgba(0, 0, 0, 0.25);
+  color: #e6d384;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  user-select: none;
+  box-shadow: inset 0 1px 5px rgba(255, 183, 0, 0.4);
+}
+
+/* -------------- Modal Styling -------------- */
+.modal-content {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow:
+    0 0 30px rgba(255, 183, 0, 0.7),
+    inset 0 0 15px rgba(255, 183, 0, 0.3);
+}
+
+.modal-header {
+  background: #ffb700;
+  color: #222;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  border-bottom: none;
+  user-select: none;
+}
+
+.modal-body {
+  padding: 2rem 2rem 3rem;
+  color: #222;
+}
+
+.modal-body form {
+  user-select: text;
+}
+
+.modal-body .nav-tabs {
+  border-bottom: 2px solid #ffb700;
+}
+
+.nav-tabs .nav-link {
+  color: #666;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border-radius: 10px 10px 0 0;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.nav-tabs .nav-link.active {
+  background: #ffb700;
+  color: #222 !important;
+  font-weight: 700;
+  border-color: #ffb700 #ffb700 #fff;
+  box-shadow: 0 4px 15px rgba(255, 183, 0, 0.6);
+}
+
+.modal-body label {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #444;
+}
+
+.modal-body input,
+.modal-body select {
+  border-radius: 12px;
+  border: 2px solid #ddd;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  outline-offset: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modal-body input:focus,
+.modal-body select:focus {
+  border-color: #ffb700;
+  outline: none;
+}
+
+.modal-body button {
+  margin-top: 1.6rem;
+  border-radius: 50px;
+  background: #ffb700;
+  border: none;
+  font-weight: 800;
+  padding: 1rem 0;
+  font-size: 1.2rem;
+  color: #222;
+  box-shadow: 0 10px 25px rgba(255, 183, 0, 0.7);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+}
+
+.modal-body button:hover,
+.modal-body button:focus {
+  background: #ffa500;
+  transform: scale(1.03);
+  outline: none;
+}
+
+/* -------------- Form Validation Messages -------------- */
+input:invalid {
+  border-color: #e74c3c !important;
+}
+
+input:valid {
+  border-color: #27ae60 !important;
+}
+
+/* -------------- Utilities -------------- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+/* -------------- Animations -------------- */
+@keyframes glow {
+  0% {
+    text-shadow:
+      0 0 6px #ffb700,
+      0 0 10px #ffb700,
+      0 0 20px #ffa500;
+  }
+  100% {
+    text-shadow:
+      0 0 10px #ffb700,
+      0 0 20px #ffb700,
+      0 0 40px #ffa500;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 12px 30px rgba(255, 183, 0, 0.6);
+  }
+  50% {
+    box-shadow: 0 20px 40px rgba(255, 183, 0, 0.9);
+  }
+  100% {
+    box-shadow: 0 12px 30px rgba(255, 183, 0, 0.6);
+  }
+}
+
+/* -------------- Responsive Design -------------- */
+@media (max-width: 991.98px) {
+  .hero-section {
+    padding: 7rem 1rem 4rem;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+  }
+
+  .info-cards {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767.98px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .info-card {
+    width: 90%;
+  }
+
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+}
+
+/* -------------- Extra Helpers -------------- */
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+/* -------------- Button Overrides -------------- */
+.btn-primary,
+.btn-success {
+  border-radius: 50px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 0.8rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+  filter: brightness(1.15);
+  transform: scale(1.05);
+}
+
+/* -------------- Form Elements -------------- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 0.8rem 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #ffb700;
+  background: rgba(255, 255, 255, 0.15);
+  outline: none;
+  color: #222;
+}
+
+textarea {
+  min-height: 120px;
+  max-height: 250px;
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* -------------- Placeholder Styling -------------- */
+::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+/* -------------- Form Labels -------------- */
+label {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: #fff;
+  display: inline-block;
+}
+
+/* -------------- Alerts & Messages -------------- */
+.alert {
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+}
+
+.alert-success {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+.alert-error,
+.alert-danger {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* -------------- Loading Spinner (Bootstrap Override) -------------- */
+.spinner-border {
+  color: #ffb700 !important;
+  width: 3rem;
+  height: 3rem;
+}
+
+/* -------------- Utility Classes for Margin & Padding -------------- */
+/* (Use sparingly, prefer Bootstrap spacing) */
+.mt-1 { margin-top: 0.25rem !important; }
+.mt-2 { margin-top: 0.5rem !important; }
+.mt-3 { margin-top: 1rem !important; }
+.mt-4 { margin-top: 1.5rem !important; }
+.mt-5 { margin-top: 3rem !important; }
+
+.mb-1 { margin-bottom: 0.25rem !important; }
+.mb-2 { margin-bottom: 0.5rem !important; }
+.mb-3 { margin-bottom: 1rem !important; }
+.mb-4 { margin-bottom: 1.5rem !important; }
+.mb-5 { margin-bottom: 3rem !important; }
+
+.p-1 { padding: 0.25rem !important; }
+.p-2 { padding: 0.5rem !important; }
+.p-3 { padding: 1rem !important; }
+.p-4 { padding: 1.5rem !important; }
+.p-5 { padding: 3rem !important; }
+
+/* -------------- Section Divider -------------- */
+.section-divider {
+  height: 3px;
+  width: 120px;
+  background: #ffb700;
+  margin: 3rem auto;
+  border-radius: 25px;
+  box-shadow: 0 0 20px #ffb700aa;
+}
+
+/* -------------- Cards: Shadows and Transitions -------------- */
+.card,
+.info-card {
+  transition: all 0.35s ease;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* -------------- Utility Flex Helpers -------------- */
+.d-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -------------- Animation Keyframes (Extras) -------------- */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+/* -------------- Responsive Nav Link Active Indicator -------------- */
+.nav-link.active {
   position: relative;
 }
 
-.password-requirements li::before {
-  content: "✗";
+.nav-link.active::after {
+  content: "";
   position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: -8px;
   left: 0;
-  color: #e74c3c;
-  font-weight: 700;
+  background: #ffb700;
+  border-radius: 4px;
 }
 
-.password-requirements li.valid::before {
-  content: "✓";
-  color: #27ae60;
-}
-
-.btn-primary {
-  background: #4b6cb7;
-  color: white;
-  border: none;
-  padding: 15px 25px;
-  font-size: 1.15rem;
-  font-weight: 700;
-  border-radius: 50px;
+/* -------------- Form Checkbox & Radio Custom -------------- */
+.form-check-input {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 3px;
   cursor: pointer;
-  box-shadow: 0 10px 20px rgba(75,108,183,0.4);
-  transition: background-color 0.3s ease;
+  border: 2px solid rgba(255,255,255,0.5);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.btn-primary:hover {
-  background: #3b5294;
+.form-check-input:checked {
+  background-color: #ffb700;
+  border-color: #ffb700;
 }
 
-.btn-link {
-  background: none;
-  border: none;
-  color: #4b6cb7;
+/* -------------- File Input Styling -------------- */
+.custom-file-input {
+  display: none;
+}
+
+.custom-file-label {
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #eee;
   cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  user-select: none;
+}
+
+.custom-file-label:hover {
+  background-color: rgba(255, 183, 0, 0.15);
+  border-color: #ffb700;
+}
+
+.custom-file-label:active {
+  background-color: rgba(255, 183, 0, 0.25);
+}
+
+/* -------------- Tooltip Overrides -------------- */
+.tooltip-inner {
+  background-color: #ffb700 !important;
+  color: #222 !important;
   font-weight: 700;
-  font-size: 1rem;
-  text-decoration: underline;
-  padding: 0;
-  margin-left: 5px;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.switch-text {
-  text-align: center;
-  font-size: 1rem;
-  margin-top: 10px;
-  color: #666;
+/* -------------- Animation Helpers for AOS & Manual -------------- */
+.fade-in {
+  animation: fadeInUp 1.2s ease forwards;
+  opacity: 0;
 }
 
-.message {
-  text-align: center;
-  font-weight: 600;
-  margin-top: 10px;
-  min-height: 20px;
-  color: #e74c3c;
+/* -------------- Loading Overlay (optional) -------------- */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(25, 25, 30, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+  color: #ffb700;
+  font-weight: 700;
+  font-size: 1.6rem;
+  user-select: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
+
+.loading-overlay.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* -------------- Utilities for Text Shadows -------------- */
+.text-glow-yellow {
+  text-shadow:
+    0 0 6px #ffb700,
+    0 0 15px #ffb700,
+    0 0 30px #ffa500;
+}
+
+/* -------------- End of style.css ------------------- */
